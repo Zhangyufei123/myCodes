@@ -1,5 +1,6 @@
 package myCodesTest;
 
+import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.*;
 
@@ -7,11 +8,13 @@ import org.springframework.context.annotation.*;
 @ComponentScan
 public class Application {
 
+	static Logger logger = Logger.getLogger(Application.class.getName());
     @Bean
     MessageService mockMessageService() {
         return new MessageService() {
             public String getMessage() {
-              return "Hello World!";
+            	logger.info("this log4j Hello world");
+            	return "Hello World!";
             }
         };
     }
